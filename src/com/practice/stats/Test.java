@@ -8,10 +8,8 @@ public class Test {
 
 	public static void main(String[] args) {
 		// -define .csv file in app
-		
 		// -File class needed to turn stringName to actual file
-		File file = new File("nfldata15.csv");
-
+		File file = new File("nflstats15.csv");
 		try {
 			// -read from filePooped with Scanner class
 			Scanner inputStream = new Scanner(file);
@@ -20,7 +18,6 @@ public class Test {
 				// read single line, put in string
 				String data = inputStream.next();
 				System.out.println(data + "***");
-
 			}
 			// after loop, close scanner
 			inputStream.close();
