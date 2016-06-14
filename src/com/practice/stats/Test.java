@@ -8,9 +8,9 @@ public class Test {
 
 	public static void main(String[] args) {
 		// -define .csv file in app
-		String fileNameDefined = "uploadedcsv/employees.csv";
+		
 		// -File class needed to turn stringName to actual file
-		File file = new File(fileNameDefined);
+		File file = new File("nfldata15.csv");
 
 		try {
 			// -read from filePooped with Scanner class
