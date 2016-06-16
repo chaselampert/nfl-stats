@@ -23,7 +23,8 @@ public class Test {
 				// read single line, put in string
 				if (x == 2 || x == 3 || x == 4||x==5) {
 					String data = inputStream.nextLine();
-					System.out.println(data + "***");
+					String[] split = data.split(",");
+					System.out.println(split[0] + "***");
 				}
 				x++;
 			}
