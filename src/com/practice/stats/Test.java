@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import javax.print.DocFlavor.STRING;
+
 public class Test {
-	
+
 	public static void main(String[] args) {
 		addDataToStructure();
 	}
@@ -21,10 +23,11 @@ public class Test {
 			int x = 2;
 			while (inputStream.hasNext()) {
 				// read single line, put in string
-				if (x == 2 || x == 3 || x == 4||x==5) {
+				if (x == 2 || x == 3 || x == 4 || x == 5) {
 					String data = inputStream.nextLine();
-					String[] split = data.split(",");
-					System.out.println(split[0] + "***");
+					data = data.replace(",,", ",NO DATA,");
+					String[] sub = data.split(",");
+					System.out.println(sub[0] + "***");
 				}
 				x++;
 			}
