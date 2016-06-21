@@ -2,14 +2,18 @@ package com.practice.stats;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import javax.print.DocFlavor.STRING;
 
 public class Test {
+	public static Map<Integer, Play> games = new HashMap<Integer, Play>();
 
 	public static void main(String[] args) {
 		addDataToStructure();
@@ -25,18 +29,29 @@ public class Test {
 			// hashNext() loops line-by-line
 			int x = 2;
 			while (inputStream.hasNext()) {
+
 				// read single line, put in string
+				String data = inputStream.nextLine();
+				String gameID = data.substring(0, data.indexOf(","));
+				if (!gameID.equals("GameId")) {
+					Integer id = Integer.parseInt(gameID);
+					Play current = new Play(splitString(data));
+					System.out.println(current);
+					games.put(id, current);
+				}
+
 				if (x >= 2 && x <= 10) {
-					String data = inputStream.nextLine();
 					// String[] sub = data.split(",");
 					List<String> list = splitString(data);
 					// System.out.println(sub.length + ": " +
 					// Arrays.toString(sub));
-					System.out.println(list);
+					// System.out.println(list);
 				} else {
 					System.exit(0);
 				}
+
 				x++;
+
 			}
 			// after loop, close scanner
 			inputStream.close();
@@ -46,7 +61,7 @@ public class Test {
 	}
 
 	public static List splitString(String data) {
-		List list = new LinkedList<String>();
+		List list = new ArrayList<String>();
 		while (data.length() > 0) {
 			String column = "";
 			int commaIndex = data.indexOf(",");
